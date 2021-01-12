@@ -154,7 +154,8 @@ namespace ClassicUO.Game.GameObjects
         public bool IsHuman => Graphic >= 0x0190 && Graphic <= 0x0193 || Graphic >= 0x00B7 && Graphic <= 0x00BA ||
                                Graphic >= 0x025D && Graphic <= 0x0260 || Graphic == 0x029A || Graphic == 0x029B ||
                                Graphic == 0x02B6 || Graphic == 0x02B7 || Graphic == 0x03DB || Graphic == 0x03DF ||
-                               Graphic == 0x03E2 || Graphic == 0x02E8 || Graphic == 0x02E9 || Graphic == 0x04E5;
+                               Graphic == 0x03E2 || Graphic == 0x02E8 || Graphic == 0x02E9 || Graphic == 0x04E5 || 
+                               Graphic == 0x01A4 || Graphic == 0x01A5;
 
         public bool IsGargoyle => Client.Version >= ClientVersion.CV_7000 && Graphic == 0x029A || Graphic == 0x029B;
 
@@ -1204,6 +1205,7 @@ namespace ClassicUO.Game.GameObjects
             {
                 case 0x0190:
                 case 0x0192:
+                case 0x01A4:
                 {
                     IsFemale = false;
                     Race = RaceType.HUMAN;
@@ -1213,12 +1215,13 @@ namespace ClassicUO.Game.GameObjects
 
                 case 0x0191:
                 case 0x0193:
+                case 0x01A5:
                 {
                     IsFemale = true;
                     Race = RaceType.HUMAN;
 
                     break;
-                }
+                }  
 
                 case 0x025D:
                 {

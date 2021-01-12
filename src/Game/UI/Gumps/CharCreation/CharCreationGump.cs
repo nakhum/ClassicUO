@@ -42,24 +42,52 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
         private readonly LoginScene _loginScene;
         private ProfessionInfo _selectedProfession;
 
+
         public CharCreationGump(LoginScene scene) : base(0, 0)
         {
             _loginScene = scene;
-            Add(new CreateCharAppearanceGump(), 1);
-            SetStep(CharCreationStep.Appearence);
-            CanCloseWithRightClick = false;
+            //Add(new CreateCharAppearanceGump(), 1);
+            //SetStep(CharCreationStep.Appearence);   
+            //CanCloseWithRightClick = false;
+            CreateNewChar(_character);
+        }
+
+        // NEU - Setzt die default Charakterwerte.
+        public void CreateNewChar(PlayerMobile character)
+        {
+            if (_character == null)
+            {
+                _character = new PlayerMobile(1);
+                World.Mobiles.Add(_character);
+            }
+            _character.Hue = 0;
+            _character.Name = "Neuer Charakter";
+            _character.Race = RaceType.HUMAN;
+            _character.IsFemale = false;
+            _selectedProfession = new ProfessionInfo();
+            _selectedProfession.DescriptionIndex = 1;
+            SetCharacter(_character);
+
         }
 
         internal static int _skillsCount => Client.Version >= ClientVersion.CV_70160 ? 4 : 3;
 
         public void SetCharacter(PlayerMobile character)
         {
+
             _character = character;
-            SetStep(CharCreationStep.ChooseProfession);
+
+            //SetStep(CharCreationStep.ChooseProfession);
+
+            //SetStep(CharCreationStep.ChooseCity);
+            SetProfession(_selectedProfession);
+
         }
 
         public void SetAttributes(bool force = false)
         {
+            
+            
             SetStep
             (
                 _selectedProfession.DescriptionIndex >= 0 || force ?
@@ -131,6 +159,7 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
 
         public void CreateCharacter(byte profession)
         {
+            
             _loginScene.CreateCharacter(_character, _cityIndex, profession);
         }
 
@@ -199,7 +228,9 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
                     break;
 
                 case CharCreationStep.ChooseCity:
-                    existing = Children.FirstOrDefault(page => page.Page == 4);
+
+                    CreateCharacter((byte)_selectedProfession.DescriptionIndex);
+                    /*existing = Children.FirstOrDefault(page => page.Page == 4);
 
                     if (existing != null)
                     {
@@ -208,7 +239,7 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
 
                     Add(new CreateCharSelectionCityGump((byte) _selectedProfession.DescriptionIndex, _loginScene), 4);
 
-                    ChangePage(4);
+                    ChangePage(4);*/
 
                     break;
             }

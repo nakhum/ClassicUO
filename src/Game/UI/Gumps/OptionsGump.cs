@@ -1053,6 +1053,7 @@ namespace ClassicUO.Game.UI.Gumps
             SettingsSection section3 = AddSettingsSection(box, "Lights");
             section3.Y = section2.Bounds.Bottom + 40;
 
+            /*
             section3.Add
             (
                 _altLights = AddCheckBox
@@ -1067,6 +1068,12 @@ namespace ClassicUO.Game.UI.Gumps
 
             section3.AddRight
                 (_lightBar = AddHSlider(null, 0, 0x1E, 0x1E - _currentProfile.LightLevel, startX, startY, 250));
+            */
+            section3.Add
+                (
+                AddLabel
+                (null, "Customlightlevel deaktiviert.", startX, startY)
+                );
 
             section3.Add
             (
@@ -2592,10 +2599,11 @@ namespace ClassicUO.Game.UI.Gumps
                 Client.Game.SetWindowBorderless(_windowBorderless.IsChecked);
             }
 
-            _currentProfile.UseAlternativeLights = _altLights.IsChecked;
-            _currentProfile.UseCustomLightLevel = _enableLight.IsChecked;
-            _currentProfile.LightLevel = (byte) (_lightBar.MaxValue - _lightBar.Value);
+            //_currentProfile.UseAlternativeLights = _altLights.IsChecked;
+            //_currentProfile.UseCustomLightLevel = _enableLight.IsChecked;
+            //_currentProfile.LightLevel = (byte) (_lightBar.MaxValue - _lightBar.Value);
 
+            /*
             if (_enableLight.IsChecked)
             {
                 World.Light.Overall = _currentProfile.LightLevel;
@@ -2605,7 +2613,10 @@ namespace ClassicUO.Game.UI.Gumps
             {
                 World.Light.Overall = World.Light.RealOverall;
                 World.Light.Personal = World.Light.RealPersonal;
-            }
+            }*/
+
+            World.Light.Overall = World.Light.RealOverall;
+            World.Light.Personal = World.Light.RealPersonal;
 
             _currentProfile.UseColoredLights = _useColoredLights.IsChecked;
             _currentProfile.UseDarkNights = _darkNights.IsChecked;

@@ -204,7 +204,8 @@ namespace ClassicUO.Game.GameObjects
                                (Amount, 0x00B7, 0x00BA) || MathHelper.InRange
                                (Amount, 0x025D, 0x0260) || MathHelper.InRange
                                (Amount, 0x029A, 0x029B) || MathHelper.InRange
-                               (Amount, 0x02B6, 0x02B7) || Amount == 0x03DB || Amount == 0x03DF || Amount == 0x03E2 ||
+                               (Amount, 0x02B6, 0x02B7) || MathHelper.InRange
+                               (Amount, 0x01A5, 0x01A4) || Amount == 0x03DB || Amount == 0x03DF || Amount == 0x03E2 ||
                            Amount == 0x02E8 || Amount == 0x02E9;
 
             DrawLayer(batcher, posX, posY, this, Layer.Invalid, animIndex, ishuman, Hue, IsFlipped, HueVector.Z);

@@ -61,17 +61,20 @@ namespace ClassicUO.Game.UI.Gumps.Login
             {
                 _buttonNormal = 0x15A4;
                 _buttonOver = 0x15A5;
-                const ushort HUE = 0x0386;
+                const ushort HUE = 0x0A7C;
 
+                /* ALTER UO-OSI RAHMEN
                 if (Client.Version >= ClientVersion.CV_500A)
                 {
                     Add(new GumpPic(0, 0, 0x2329, 0));
                 }
+                */
 
                 //UO Flag
-                Add(new GumpPic(0, 4, 0x15A0, 0) { AcceptKeyboardInput = false });
+                //Add(new GumpPic(0, 4, 0x15A0, 0) { AcceptKeyboardInput = false });
 
                 // Quit Button
+                /*
                 Add
                 (
                     new Button((int) Buttons.Quit, 0x1589, 0x158B, 0x158A)
@@ -81,14 +84,16 @@ namespace ClassicUO.Game.UI.Gumps.Login
                         ButtonAction = ButtonAction.Activate
                     }
                 );
+                */
 
                 //Login Panel
+                /*
                 Add
                 (
                     new ResizePic(0x13BE)
                     {
-                        X = 128,
-                        Y = 288,
+                        X = 475,
+                        Y = 600,
                         Width = 451,
                         Height = 157
                     }
@@ -98,35 +103,40 @@ namespace ClassicUO.Game.UI.Gumps.Login
                 {
                     Add(new GumpPic(286, 45, 0x058A, 0));
                 }
+                */
 
+                /* Log in to Ultima Online
                 Add
                 (
                     new Label(ResGumps.LoginToUO, false, HUE, font: 2)
+                    //new Label("Gebe deine Benutzerdaten ein", false, 0x034F, font: 5)
                     {
-                        X = 253,
-                        Y = 305
+                        X = 570,
+                        Y = 605
+                    }
+                );
+                */
+
+                Add
+                (
+                    new Label("Name", false, HUE, font: 3)
+                    {
+                        X = 555,
+                        Y = 615
                     }
                 );
 
                 Add
                 (
-                    new Label(ResGumps.Account, false, HUE, font: 2)
+                    new Label("Passwort", false, HUE, font: 3)
                     {
-                        X = 183,
-                        Y = 345
+                        X = 555,
+                        Y = 685
                     }
                 );
 
-                Add
-                (
-                    new Label(ResGumps.Password, false, HUE, font: 2)
-                    {
-                        X = 183,
-                        Y = 385
-                    }
-                );
-
-                // Arrow Button
+                // Arrow Button ALT
+                /*
                 Add
                 (
                     _nextArrow0 = new Button((int) Buttons.NextArrow, 0x15A4, 0x15A6, 0x15A5)
@@ -136,12 +146,23 @@ namespace ClassicUO.Game.UI.Gumps.Login
                         ButtonAction = ButtonAction.Activate
                     }
                 );
+                */
 
-
-                offsetX = 328;
-                offsetY = 343;
-                offtextY = 40;
-
+                // Arrow Button LOGIN Neu                
+                Add
+                (
+                    _nextArrow0 = new Button((int) Buttons.NextArrow, 0x09AB, 0x09AD, 0x09AC)
+                    {
+                        X = 610,
+                        Y = 750,
+                        ButtonAction = ButtonAction.Activate
+                    }
+                );
+                
+                offsetX = 550;
+                offsetY = 637;
+                offtextY = 70;
+                /* UO UND CUO VERSION NUMMERIERUNG DEAKTIVIERT!
                 Add
                 (
                     new Label($"UO Version {Settings.GlobalSettings.ClientVersion}.", false, 0x034E, font: 9)
@@ -159,28 +180,28 @@ namespace ClassicUO.Game.UI.Gumps.Login
                         Y = 465
                     }
                 );
-
+                */
 
                 Add
                 (
-                    _checkboxAutologin = new Checkbox(0x00D2, 0x00D3, ResGumps.Autologin, 1, 0x0386, false)
+                    _checkboxAutologin = new Checkbox(0x00D2, 0x00D3, "Autologin", 3, HUE, false)
                     {
-                        X = 150,
-                        Y = 417
+                        X = 1050,
+                        Y = 760
                     }
                 );
 
                 Add
                 (
-                    _checkboxSaveAccount = new Checkbox(0x00D2, 0x00D3, ResGumps.SaveAccount, 1, 0x0386, false)
+                    _checkboxSaveAccount = new Checkbox(0x00D2, 0x00D3, "Account speichern", 3, HUE, false)
                     {
                         X = _checkboxAutologin.X + _checkboxAutologin.Width + 10,
-                        Y = 417
+                        Y = 760
                     }
                 );
 
-                font = 1;
-                hue = 0x0386;
+                font = 3;
+                hue = HUE;
             }
             else
             {
@@ -213,9 +234,9 @@ namespace ClassicUO.Game.UI.Gumps.Login
 
                 offsetX = 218;
                 offsetY = 283;
-                offtextY = 50;
+                offtextY = 40;
 
-
+                /* VERSION NUMMERIERUNG DEAKTIVIERT!
                 Add
                 (
                     new Label($"UO Version {Settings.GlobalSettings.ClientVersion}.", false, 0x0481, font: 9)
@@ -233,7 +254,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
                         Y = 465
                     }
                 );
-
+                */
 
                 Add
                 (
@@ -248,7 +269,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
                 (
                     _checkboxSaveAccount = new Checkbox(0x00D2, 0x00D3, ResGumps.SaveAccount, 9, 0x0481, false)
                     {
-                        X = _checkboxAutologin.X + _checkboxAutologin.Width + 10,
+                        X = _checkboxAutologin.X + _checkboxAutologin.Width + 5,
                         Y = 417
                     }
                 );
@@ -320,6 +341,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
 
             //Add(new NiceButton(){ });
 
+            /* PAYPAL DONATION BUTTON FÜR CLASSICUO - DEAKTIVIERT!
             Add
             (
                 new HtmlControl
@@ -329,7 +351,9 @@ namespace ClassicUO.Game.UI.Gumps.Login
                     0x32, true, isunicode: true, style: FontStyle.BlackBorder
                 )
             );
+            */
 
+            /* PATREON BUTTON FÜR CLASSICUO - DEAKTIVIERT!
             Add
             (
                 new HtmlControl
@@ -339,8 +363,9 @@ namespace ClassicUO.Game.UI.Gumps.Login
                     0x32, true, isunicode: true, style: FontStyle.BlackBorder
                 )
             );
+            */
 
-
+            /* WEBSITE BUTTON FÜR CLASSICUO - DEAKTIVIERT!
             Add
             (
                 new HtmlControl
@@ -350,22 +375,24 @@ namespace ClassicUO.Game.UI.Gumps.Login
                     true, isunicode: true, style: FontStyle.BlackBorder
                 )
             );
-
+            */
+            
+            /* TODO - DISCORD LOGO EINFÜGEN?
             Add
             (
                 new HtmlControl
                 (
                     505, htmlY + 19, 100, 15, false, false, false,
-                    "<body link=\"#ad9413\" vlink=\"#00FF00\" ><a href=\"https://discord.gg/VdyCpjQ\">Join Discord",
+                    "<body link=\"#ad9413\" vlink=\"#00FF00\" ><a href=\"https://discord.gg/dXE7kF4ZSr\">Discord",
                     0x32, true, isunicode: true, style: FontStyle.BlackBorder
                 )
             );
+            */
 
-
-            Checkbox loginmusic_checkbox = new Checkbox(0x00D2, 0x00D3, "Music", font, hue, false)
+            Checkbox loginmusic_checkbox = new Checkbox(0x00D2, 0x00D3, "Musik", font, hue, false)
             {
-                X = _checkboxSaveAccount.X + _checkboxSaveAccount.Width + 10,
-                Y = 417,
+                X = _checkboxSaveAccount.X + _checkboxSaveAccount.Width + 5,
+                Y = 760,
                 IsChecked = Settings.GlobalSettings.LoginMusic
             };
 
@@ -431,6 +458,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
 
             base.Update(totalTime, frameTime);
 
+            /* SETZT DAS BLINKEN DES LOGIN-BUTTONS UND CROPPED IHN
             if (_time < totalTime)
             {
                 _time = (float) totalTime + 1000;
@@ -438,6 +466,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
                 _nextArrow0.ButtonGraphicNormal =
                     _nextArrow0.ButtonGraphicNormal == _buttonNormal ? _buttonOver : _buttonNormal;
             }
+            */
 
             if (_passwordFake.HasKeyboardFocus)
             {

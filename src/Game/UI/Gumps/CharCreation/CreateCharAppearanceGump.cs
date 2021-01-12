@@ -607,7 +607,8 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
 
                 return false;
             }
-
+            
+            
             return true;
         }
 

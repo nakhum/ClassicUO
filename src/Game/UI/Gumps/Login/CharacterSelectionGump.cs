@@ -61,8 +61,8 @@ namespace ClassicUO.Game.UI.Gumps.Login
             if (Client.Version >= ClientVersion.CV_6040 ||
                 Client.Version >= ClientVersion.CV_5020 && loginScene.Characters.Length > 5)
             {
-                listTitleY = 96;
-                yOffset = 125;
+                listTitleY = 365;
+                yOffset = 395;
                 yBonus = 45;
             }
 
@@ -75,19 +75,20 @@ namespace ClassicUO.Game.UI.Gumps.Login
                 _selectedCharacter = 0;
             }
 
+            //CHARACTER SELECTION BACKGROUND
             Add
             (
                 new ResizePic(0x0A28)
                 {
-                    X = 160, Y = 70, Width = 408, Height = 343 + yBonus
+                    X = 450, Y = 350, Width = 408, Height = 343 + yBonus
                 }, 1
             );
 
             Add
             (
-                new Label(ClilocLoader.Instance.GetString(3000050, "Character Selection"), false, 0x0386, font: 2)
+                new Label(ClilocLoader.Instance.GetString(3000050, "Character Selection"), false, 0x0A7C, font: 3)
                 {
-                    X = 267, Y = listTitleY
+                    X = 575, Y = listTitleY
                 }, 1
             );
 
@@ -116,7 +117,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
                     (
                         new CharacterEntryGump((uint) i, character, SelectCharacter, LoginCharacter)
                         {
-                            X = 224,
+                            X = 524,
                             Y = yOffset + posInList * 40,
                             Hue = posInList == _selectedCharacter ? SELECTED_COLOR : NORMAL_COLOR
                         }, 1
@@ -132,7 +133,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
                 (
                     new Button((int) Buttons.New, 0x159D, 0x159F, 0x159E)
                     {
-                        X = 224, Y = 350 + yBonus, ButtonAction = ButtonAction.Activate
+                        X = 500, Y = 650 + yBonus, ButtonAction = ButtonAction.Activate
                     }, 1
                 );
             }
@@ -141,8 +142,8 @@ namespace ClassicUO.Game.UI.Gumps.Login
             (
                 new Button((int) Buttons.Delete, 0x159A, 0x159C, 0x159B)
                 {
-                    X = 442,
-                    Y = 350 + yBonus,
+                    X = 742,
+                    Y = 650 + yBonus,
                     ButtonAction = ButtonAction.Activate
                 }, 1
             );
@@ -151,7 +152,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
             (
                 new Button((int) Buttons.Prev, 0x15A1, 0x15A3, 0x15A2)
                 {
-                    X = 586, Y = 445, ButtonAction = ButtonAction.Activate
+                    X = 630, Y = 755, ButtonAction = ButtonAction.Activate
                 }, 1
             );
 
@@ -159,7 +160,7 @@ namespace ClassicUO.Game.UI.Gumps.Login
             (
                 new Button((int) Buttons.Next, 0x15A4, 0x15A6, 0x15A5)
                 {
-                    X = 610, Y = 445, ButtonAction = ButtonAction.Activate
+                    X = 654, Y = 755, ButtonAction = ButtonAction.Activate
                 }, 1
             );
 

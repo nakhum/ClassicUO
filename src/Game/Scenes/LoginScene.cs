@@ -125,7 +125,7 @@ namespace ClassicUO.Game.Scenes
                 Client.Game.RestoreWindow();
             }
 
-            Client.Game.SetWindowSize(640, 480);
+            Client.Game.SetWindowSize(1400, 800);
         }
 
 
@@ -247,6 +247,7 @@ namespace ClassicUO.Game.Scenes
                     _pingTime = Time.Ticks + 60000; // reset ping timer
 
                     return new CharCreationGump(this);
+
             }
 
             return null;
@@ -388,7 +389,7 @@ namespace ClassicUO.Game.Scenes
         {
             if (CurrentLoginStep == LoginSteps.CharacterSelection)
             {
-                CurrentLoginStep = LoginSteps.CharacterCreation;
+                CurrentLoginStep = LoginSteps.CharacterCreation;                
             }
         }
 

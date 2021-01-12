@@ -35,8 +35,11 @@ using MathHelper = ClassicUO.Utility.MathHelper;
 
 namespace ClassicUO.Game.UI.Gumps.CharCreation
 {
+
     internal class CreateCharSelectionCityGump : Gump
     {
+
+
         private readonly List<CityControl> _cityControls = new List<CityControl>();
         private readonly string[] _cityNames = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno", "Ter Mur" };
         private readonly Label _facetName;
@@ -44,6 +47,7 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
         private readonly LoginScene _scene;
         private CityInfo _selectedCity;
         private readonly byte _selectedProfession;
+
 
         private readonly Point[] _townButtonsText =
         {
@@ -66,9 +70,9 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
 
             _scene = scene;
             _selectedProfession = profession;
-
-            CityInfo city;
-
+  
+            CityInfo city;            
+        
             if (Client.Version >= ClientVersion.CV_70130)
             {
                 city = scene.GetCity(0);
@@ -122,6 +126,7 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
                 _facetName.IsVisible = false;
             }
 
+
             Add(_facetName);
 
 
@@ -145,7 +150,7 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
                 }
             );
 
-
+            
             _htmlControl = new HtmlControl(452, 60, 175, 367, true, true, ishtml: true, text: city.Description);
             Add(_htmlControl);
 
@@ -153,6 +158,7 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
             {
                 _htmlControl.IsVisible = false;
             }
+
 
             for (int i = 0; i < scene.Cities.Length; i++)
             {
@@ -195,9 +201,10 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
                 }
             }
 
-            SetCity(city);
-        }
 
+            SetCity(city);
+
+        }
 
         private void SetCity(int index)
         {
@@ -234,7 +241,7 @@ namespace ClassicUO.Game.UI.Gumps.CharCreation
 
         public override void OnButtonClick(int buttonID)
         {
-            CharCreationGump charCreationGump = UIManager.GetGump<CharCreationGump>();
+         CharCreationGump charCreationGump = UIManager.GetGump<CharCreationGump>();
 
             if (charCreationGump == null)
             {

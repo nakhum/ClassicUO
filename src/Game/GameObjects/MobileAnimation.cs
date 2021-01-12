@@ -68,6 +68,7 @@ namespace ClassicUO.Game.GameObjects
                     g = 666;
 
                     break;
+
             }
 
             return g;
